@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALINDROME CHECKER</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #container{
+            background-color: brown;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            box-shadow:2px 2px 2px 2px black;
+        }
+        input{
+            padding: 6px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        button{
+            padding: 8px;
+            font-size: 1.2rem;
+            width: 150px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+        }
+        button:active{
+           letter-spacing: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Palindrom Checker</h1>
+        <input type="text" id="js-input">
+        <button id="js-check" onclick="check();">Check</button>
+        <p id="js-result"></p>
+    </div>
+    
+    
+
+
+    <script>
+        const inputElement=document.getElementById('js-input');
+        const resultElement=document.getElementById('js-result')
+        
+
+        function reverseString(str){
+            return str.split("").reverse().join("");
+
+        }
+
+        function check(){
+            const value=inputElement.value;
+            const reverseValue=reverseString(value);
+            if(value!=''){
+                if(value===reverseValue){
+                    const toUpper=value.toUpperCase() + ' IS'
+                    inputElement.value=''
+                    return resultElement.textContent=`${toUpper} P A L I N D R O M E`;
+                }else{
+                    inputElement.value=''
+                    return resultElement.textContent=`Not Palindrome! Try Again ${value}==>${reverseValue}`
+                    
+                }
+            }else{
+                inputElement.value=''
+                return resultElement.textContent=`The input box can not be empty`
+                
+            }
+            
+        }
+    </script>
+</body>
+</html>
